@@ -4,7 +4,8 @@ Portfólio profissional de um estudante de **Engenharia de Software (PUC Minas)*
 com estética de **hardware Teenage Engineering** e um **robô de fundo animado
 pelo scroll**.
 
-**Status:** 🟢 Lab01S02 concluída (local) — S03 (deploy e acabamento) a seguir.
+**Status:** 🟢 Sprints **S01–S03 concluídas localmente** — falta apenas publicar na
+Vercel (ver [Deploy](#deploy)).
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-000?logo=nextdotjs)](https://nextjs.org)
 [![React](https://img.shields.io/badge/React-19-087ea4?logo=react)](https://react.dev)
@@ -217,7 +218,7 @@ Capturas do protótipo atual (Playwright, 1440×900 e 390×844) em
 | --- | --- | --- |
 | **Lab01S01** | Repositório, wireframes, protótipo navegável, layout e robô (fallback 2D) | ✅ |
 | **Lab01S02** | Sobre bilíngue, timeline de projetos, experiências, formulário validado, EmailJS | ✅ |
-| **Lab01S03** | Deploy na Vercel, acabamento visual, capturas, README final | ⏳ |
+| **Lab01S03** | Deploy na Vercel, acabamento visual, capturas, README final | ✅ (deploy pendente) |
 
 ## O robô de fundo
 
