@@ -29,9 +29,43 @@ const vt323 = VT323({
 });
 
 export const metadata: Metadata = {
-  title: "Rodrigo [[sobrenome]] — Portfólio",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  ),
+  title: {
+    default: "Rodrigo [[sobrenome]] — Portfólio",
+    template: "%s · Rodrigo [[sobrenome]]",
+  },
   description:
-    "Portfólio de um estudante de Engenharia de Software na PUC Minas. Lab01S01 prototype.",
+    "Portfólio de Rodrigo [[sobrenome]], estudante de Engenharia de Software na PUC Minas. Apps e produtos digitais do design ao código.",
+  keywords: [
+    "portfólio",
+    "desenvolvedor",
+    "engenharia de software",
+    "PUC Minas",
+    "Next.js",
+    "React",
+    "TypeScript",
+  ],
+  authors: [{ name: "Rodrigo [[sobrenome]]" }],
+  creator: "Rodrigo [[sobrenome]]",
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    alternateLocale: "en_US",
+    siteName: "Rodrigo [[sobrenome]] — Portfólio",
+    title: "Rodrigo [[sobrenome]] — Portfólio",
+    description:
+      "Estudante de Engenharia de Software na PUC Minas. Apps e produtos digitais do design ao código.",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Portfólio RD-01" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rodrigo [[sobrenome]] — Portfólio",
+    description:
+      "Estudante de Engenharia de Software na PUC Minas. Apps e produtos digitais do design ao código.",
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({

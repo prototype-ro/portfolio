@@ -20,12 +20,16 @@ pelo scroll**.
 - [Tecnologias](#tecnologias)
 - [Arquitetura](#arquitetura)
 - [Instalação e execução](#instalação-e-execução)
+- [Deploy](#deploy)
+- [Testes e verificação](#testes-e-verificação)
 - [Estrutura de pastas](#estrutura-de-pastas)
 - [Demonstração](#demonstração)
 - [Planejamento das sprints](#planejamento-das-sprints)
 - [O robô de fundo](#o-robô-de-fundo)
 - [O que ainda é placeholder](#o-que-ainda-é-placeholder)
+- [Documentação usada](#documentação-usada)
 - [Autores](#autores)
+- [Agradecimentos](#agradecimentos)
 - [Licença](#licença)
 
 ## Sobre o projeto
@@ -109,6 +113,71 @@ npm run build && npm start   # build de produção
 npm run lint                 # ESLint
 ```
 
+### Dependências principais
+
+Lidas do `package.json`:
+
+| Pacote | Versão | Papel |
+| --- | --- | --- |
+| `next` | 15.5.27 | Framework (App Router) |
+| `react` / `react-dom` | 19.1.0 | UI |
+| `typescript` | ^5 | Tipagem estrita |
+| `tailwindcss` | ^4 | Estilo |
+| `@tailwindcss/postcss` | ^4 | Pipeline do Tailwind v4 |
+| `shadcn` | ^4.21.4 | Componentes |
+| `@base-ui/react` | ^1.9.0 | Primitivos de UI |
+| `framer-motion` | ^12.43.0 | Animações |
+| `react-hook-form` | ^7.90.0 | Formulário |
+| `@hookform/resolvers` + `zod` | ^5.9.1 / ^4.6.7 | Validação |
+| `@emailjs/browser` | ^5.0.3 | Envio de e-mail |
+| `lucide-react` | ^1.56.0 | Ícones |
+| `sonner` | ^2.0.8 | Toasts |
+| `clsx` + `tailwind-merge` + `cn` | ^2.1.1 / ^3.7.0 / ^0.4.0 | Classes utilitárias |
+| `eslint` + `eslint-config-next` | ^9 / 15.5.27 | Lint |
+| `playwright` | ^1.64.0 | Capturas e verificação |
+
+### Variáveis de ambiente
+
+```bash
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=
+NEXT_PUBLIC_SITE_URL=            # opcional: URL pública (metadataBase/OG)
+```
+
+## Deploy
+
+Publicado na **Vercel**. Acesso: **`[[URL DO SITE]]`**.
+
+Passo a passo:
+
+1. Suba o repositório para o GitHub.
+2. Em <https://vercel.com/new>, importe o repositório (framework detectado:
+   Next.js; build `next build`; sem configuração extra).
+3. Em **Settings → Environment Variables**, adicione as 3 chaves do EmailJS
+   (opcionalmente `NEXT_PUBLIC_SITE_URL`).
+4. **Deploy**. A URL `*.vercel.app` fica pronta em ~1 minuto.
+
+Alternativa por CLI:
+
+```bash
+npx vercel        # preview
+npx vercel --prod # produção
+```
+
+## Testes e verificação
+
+Não há suíte de testes unitários; a verificação é feita com type-check/lint e
+scripts Playwright no repositório:
+
+```bash
+npm run build                          # inclui type-check
+npm run lint
+node scripts/check-overflow.mjs        # garante zero rolagem horizontal em 375/768/1280/1920
+node scripts/capture.mjs               # regenera docs/prototipo (capturas + scroll.gif)
+node scripts/wireframes.mjs            # regenera docs/wireframes (SVG + PNG)
+```
+
 ## Estrutura de pastas
 
 ```
@@ -174,6 +243,24 @@ telefone/links e textos marcados `[[...]]` em `src/data/`, imagens dos projetos
 
 **Rodrigo [[sobrenome]]** — Engenharia de Software, PUC Minas.
 Orientação: Prof. João Paulo Aramuni (DIAW).
+
+## Documentação usada
+
+- Next.js — App Router, Metadata e Fonts: <https://nextjs.org/docs>
+- React 19: <https://react.dev>
+- Tailwind CSS v4: <https://tailwindcss.com/docs>
+- shadcn/ui: <https://ui.shadcn.com>
+- Framer Motion: <https://motion.dev>
+- React Hook Form + Zod: <https://react-hook-form.com> · <https://zod.dev>
+- EmailJS (`@emailjs/browser`): <https://www.emailjs.com/docs>
+- Produção dos frames do robô: [`docs/render-guide.md`](docs/render-guide.md)
+- Roteiro da apresentação: [`docs/apresentacao.md`](docs/apresentacao.md)
+
+## Agradecimentos
+
+- Prof. **João Paulo Aramuni** (DIAW/PUC Minas), pelo enunciado e pelas
+  referências.
+- Comunidade dos projetos open source acima, pela documentação.
 
 ## Licença
 
