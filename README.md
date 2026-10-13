@@ -4,7 +4,7 @@ Portfólio profissional de um estudante de **Engenharia de Software (PUC Minas)*
 com estética de **hardware Teenage Engineering** e um **robô de fundo animado
 pelo scroll**.
 
-**Status:** 🟠 Lab01S01 em andamento — protótipo navegável (S02 e S03 a seguir).
+**Status:** 🟢 Lab01S02 concluída (local) — S03 (deploy e acabamento) a seguir.
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-000?logo=nextdotjs)](https://nextjs.org)
 [![React](https://img.shields.io/badge/React-19-087ea4?logo=react)](https://react.dev)
@@ -48,7 +48,10 @@ acabamento).
 - Quatro seções no estilo ficha técnica: **Sobre** (título, subtítulo bilíngue,
   botões, tiles de estatística e *spec sheet*), **Projetos** (timeline vertical
   com cartões alternados), **Experiências** (itens expansíveis) e **Contato**
-  (ícones diretos + formulário).
+  (ícones diretos + formulário com validação Zod, *honeypot* e anti-duplo-envio).
+- **Envio por EmailJS** direto do front-end (sem back-end). Sem as chaves em
+  `.env.local`, o formulário roda em **modo simulado** e o código fica pronto
+  para ligar — ver [`.env.example`](.env.example).
 - **Robô de fundo** em `<canvas>` mapeado ao scroll, com inércia, parallax e
   telemetria em tempo real (ver abaixo).
 - Rodapé com contador de rolagem estilo hardware.
@@ -144,7 +147,7 @@ Capturas do protótipo atual (Playwright, 1440×900 e 390×844) em
 | Sprint | Escopo | Status |
 | --- | --- | --- |
 | **Lab01S01** | Repositório, wireframes, protótipo navegável, layout e robô (fallback 2D) | ✅ |
-| **Lab01S02** | Sobre bilíngue, timeline de projetos, experiências, formulário validado, EmailJS | ⏳ |
+| **Lab01S02** | Sobre bilíngue, timeline de projetos, experiências, formulário validado, EmailJS | ✅ |
 | **Lab01S03** | Deploy na Vercel, acabamento visual, capturas, README final | ⏳ |
 
 ## O robô de fundo
