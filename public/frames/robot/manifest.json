@@ -1,17 +1,21 @@
 {
-  "count": 240,
+  "count": 214,
   "padding": 4,
   "ext": "webp",
-  "width": 1920,
-  "height": 1080,
+  "width": 1280,
+  "height": 720,
   "basePath": "/frames/robot",
-  "placeholder": true,
+  "placeholder": false,
+  "background": "#ced0d7",
+  "widthFraction": 0.55,
+  "anchor": "bottom-right",
+  "feather": 0.28,
   "chapters": [
-    { "id": "sobre", "from": 0, "to": 55 },
-    { "id": "projetos", "from": 56, "to": 140 },
-    { "id": "experiencias", "from": 141, "to": 195 },
-    { "id": "contato", "from": 196, "to": 239 }
+    { "id": "sobre", "from": 0, "to": 49 },
+    { "id": "projetos", "from": 50, "to": 124 },
+    { "id": "experiencias", "from": 125, "to": 173 },
+    { "id": "contato", "from": 174, "to": 213 }
   ],
   "anchors": [],
-  "easterEgg": { "from": 228, "to": 239 }
+  "easterEgg": { "from": 202, "to": 213 }
 }

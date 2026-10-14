@@ -34,20 +34,23 @@ export const dict = {
 
     "stat.projects": "PROJETOS",
     "stat.techs": "TECNOLOGIAS",
-    "stat.years": "ANOS DE CURSO",
+    "stat.years": "PERÍODOS",
 
     "about.p1":
-      "Estudante de Engenharia de Software na PUC Minas, em Belo Horizonte. Construo apps e produtos digitais do zero, do design ao código, com obsessão por detalhe e acabamento.",
+      "Estudante de Engenharia de Software na PUC Minas e engenheiro civil em Belo Horizonte. Há 6 anos projeto estruturas de concreto armado para projetos de mineração e industriais, hoje como Engenheiro Civil Júnior na Worley.",
     "about.p2":
-      "Atualmente equilibro a graduação com projetos autorais de produto — de apps nativos a backends e marcas digitais.",
+      "Meu foco sempre foi resolver problemas com tecnologia: automações em VBA, modelos 3D e ferramentas que poupam horas da equipe. Agora levo isso para apps e produtos digitais próprios, do design ao código.",
     "about.spec.formacao": "Formação",
-    "about.spec.formacao.value": "Engenharia de Software · PUC Minas (2024–)",
+    "about.spec.formacao.value": "Eng. de Software · PUC Minas (2026–) · Eng. Civil · PUC Minas (2017–2021) · Pós em Eng. Estrutural · PUC Minas (2022–2023)",
     "about.spec.atuacao": "Área de atuação",
-    "about.spec.atuacao.value": "Desenvolvimento de produto · Mobile · Web",
+    "about.spec.atuacao.value": "Engenharia estrutural · Automação · Desenvolvimento de produto",
     "about.spec.local": "Local",
     "about.spec.local.value": "Belo Horizonte, MG · BR",
     "about.spec.interesses": "Interesses",
-    "about.spec.interesses.value": "Design de produto, tipografia, hardware, áudio",
+    "about.spec.interesses.value": "Música, arte, games, tecnologia, cinema e viagens",
+    "about.quote":
+      "Ver o mundo, coisas perigosas de se alcançar, ver atrás das paredes, aproximar-se, encontrar uns aos outros e sentir. Esse é o propósito da vida.",
+    "about.quote.source": "LEMA DA REVISTA LIFE · A VIDA SECRETA DE WALTER MITTY (2013)",
     "about.spec.objetivos": "Objetivos",
     "about.spec.objetivos.value": "Lançar produtos próprios e atuar como engenheiro full-stack",
 
@@ -107,6 +110,13 @@ export const dict = {
     "hud.closed": "CLOSED",
     "hud.cycle": "ARM CYCLE INIT",
     "hud.stable": "STATUS: STABLE",
+
+    "rec.record": "REC",
+    "rec.stop": "PARAR",
+    "rec.started":
+      "Gravação iniciada — escolha a aba do site na janela do navegador.",
+    "rec.saved": "Vídeo salvo (.webm).",
+    "rec.error": "Não foi possível iniciar a gravação.",
   },
   en: {
     "skip.link": "Skip to content",
@@ -136,20 +146,23 @@ export const dict = {
 
     "stat.projects": "PROJECTS",
     "stat.techs": "TECHNOLOGIES",
-    "stat.years": "YEARS OF STUDY",
+    "stat.years": "SEMESTERS",
 
     "about.p1":
-      "Software Engineering student at PUC Minas, in Belo Horizonte. I build apps and digital products from scratch — from design to code, with an obsession for detail and finish.",
+      "Software Engineering student at PUC Minas and civil engineer in Belo Horizonte. For 6 years I have designed reinforced concrete structures for mining and industrial projects, currently as a Junior Civil Engineer at Worley.",
     "about.p2":
-      "I balance my degree with self-directed product work — from native apps to backends and digital brands.",
+      "I have always solved problems with technology: VBA automations, 3D models and tools that save my team hours. Now I bring that to my own apps and digital products, from design to code.",
     "about.spec.formacao": "Education",
-    "about.spec.formacao.value": "Software Engineering · PUC Minas (2024–)",
+    "about.spec.formacao.value": "Software Engineering · PUC Minas (2026–) · Civil Engineering · PUC Minas (2017–2021) · Postgrad in Structural Engineering · PUC Minas (2022–2023)",
     "about.spec.atuacao": "Field",
-    "about.spec.atuacao.value": "Product engineering · Mobile · Web",
+    "about.spec.atuacao.value": "Structural engineering · Automation · Product development",
     "about.spec.local": "Location",
     "about.spec.local.value": "Belo Horizonte, MG · BR",
     "about.spec.interesses": "Interests",
-    "about.spec.interesses.value": "Product design, typography, hardware, audio",
+    "about.spec.interesses.value": "Music, art, games, technology, movies and travel",
+    "about.quote":
+      "To see the world, things dangerous to come to, to see behind walls, draw closer, to find each other, and to feel. That is the purpose of life.",
+    "about.quote.source": "LIFE MAGAZINE MOTTO · THE SECRET LIFE OF WALTER MITTY (2013)",
     "about.spec.objetivos": "Goals",
     "about.spec.objetivos.value": "Ship my own products and work as a full-stack engineer",
 
@@ -209,6 +222,13 @@ export const dict = {
     "hud.closed": "CLOSED",
     "hud.cycle": "ARM CYCLE INIT",
     "hud.stable": "STATUS: STABLE",
+
+    "rec.record": "REC",
+    "rec.stop": "STOP",
+    "rec.started":
+      "Recording started — pick the site tab in the browser dialog.",
+    "rec.saved": "Video saved (.webm).",
+    "rec.error": "Could not start the recording.",
   },
 } as const;
 

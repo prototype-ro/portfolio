@@ -24,7 +24,7 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
         }}
         aria-expanded={open}
         aria-label={open ? t("exp.collapse") : t("exp.expand")}
-        className="flex w-full items-baseline justify-between gap-4 py-4 text-left transition-colors hover:text-accent"
+        className="flex w-full items-baseline justify-between gap-4 py-4 text-left transition-colors hover:text-accent-text"
       >
         <span className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
           <span className="label-mono">{experience.code}</span>

@@ -12,25 +12,25 @@ export const contacts: ContactChannel[] = [
   {
     id: "email",
     labelKey: "contact.email",
-    href: "mailto:[[email]]",
-    handle: "[[email]]",
+    href: "mailto:rodrigo.lagedc@gmail.com",
+    handle: "rodrigo.lagedc@gmail.com",
   },
   {
     id: "whatsapp",
     labelKey: "contact.whatsapp",
-    href: "https://wa.me/[[whatsapp]]",
-    handle: "+55 [[whatsapp]]",
+    href: "https://wa.me/5531985937611",
+    handle: "+55 (31) 98593-7611",
   },
   {
     id: "linkedin",
     labelKey: "contact.linkedin",
-    href: "https://www.linkedin.com/in/[[linkedin]]",
-    handle: "/in/[[linkedin]]",
+    href: "https://www.linkedin.com/in/rodrigo-lage-da-costa-3992911b5/",
+    handle: "/in/rodrigo-lage-da-costa",
   },
   {
     id: "github",
     labelKey: "contact.github",
-    href: "https://github.com/[[github]]",
-    handle: "@[[github]]",
+    href: "https://github.com/prototype-ro",
+    handle: "@prototype-ro",
   },
 ];

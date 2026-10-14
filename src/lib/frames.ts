@@ -9,6 +9,34 @@ export type RobotFrameManifest = {
   /** Root folder holding the `desktop/` and `mobile/` sets. */
   basePath?: string;
   /**
+   * How the frame is fitted to the canvas. `cover` (default) fills it;
+   * `contain` shows the whole frame. */
+  fit?: "cover" | "contain";
+  /** Extra zoom multiplier applied on top of `fit` (default 1). */
+  scale?: number;
+  /** Solid colour sampled from the frames, used as the page background. */
+  background?: string;
+  /**
+   * Draw the frame at this fraction of the canvas WIDTH (e.g. 0.55), keeping
+   * its aspect ratio. Overrides `fit`/`scale`. Keeps native pixels from being
+   * stretched, so the robot stays sharp. */
+  widthFraction?: number;
+  /**
+   * Soft-blend the frame edges into the background over this fraction of the
+   * drawn size (e.g. 0.2), removing the hard rectangular seam. */
+  feather?: number;
+  /** Where the frame is anchored when it does not fill the canvas. */
+  anchor?:
+    | "center"
+    | "left"
+    | "right"
+    | "top"
+    | "top-left"
+    | "top-right"
+    | "bottom"
+    | "bottom-left"
+    | "bottom-right";
+  /**
    * When true the shipped manifest documents the expected shape but the
    * frames are not rendered yet, so the procedural robot is used instead of
    * firing 240 doomed network requests. Set to false once frames exist.

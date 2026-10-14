@@ -19,6 +19,7 @@ import {
   isOkActive,
   isWaveActive,
   publishRobot,
+  registerWake,
   triggerWave,
   type RobotMode,
 } from "@/lib/robot-store";
@@ -124,6 +125,12 @@ export function RobotBackdrop() {
         .getPropertyValue("--bg")
         .trim();
       if (v) bgColor = v;
+    }
+
+    // The flat background of the clip; used for the canvas fill and the edge
+    // feather, and adopted as the page `--bg` so everything matches.
+    function frameBg(): string {
+      return manifest?.background ?? bgColor;
     }
 
     // ---- scroll → frame mapping --------------------------------------
@@ -257,6 +264,9 @@ export function RobotBackdrop() {
       frameId = requestAnimationFrame(tick);
     }
 
+    // Let UI commands (hover, focus, submit, wave) restart an idle loop.
+    const unregisterWake = registerWake(wake);
+
     // ---- canvas sizing -------------------------------------------------
     function resize() {
       const rect = el.getBoundingClientRect();
@@ -275,7 +285,7 @@ export function RobotBackdrop() {
       const cw = rect.width;
       const chh = rect.height;
       g.clearRect(0, 0, cw, chh);
-      g.fillStyle = bgColor;
+      g.fillStyle = frameBg();
       g.fillRect(0, 0, cw, chh);
 
       if (manifest && sequence) {
@@ -283,12 +293,33 @@ export function RobotBackdrop() {
         if (nextAsset) asset = nextAsset;
         if (asset) {
           const { w, h } = assetSize(asset);
-          const scale = Math.max(cw / w, chh / h);
-          const dw = w * scale;
-          const dh = h * scale;
-          const dx = (cw - dw) / 2 + (isMobile ? 0 : cw * 0.12);
-          const dy = (chh - dh) / 2;
+          let dw: number;
+          let dh: number;
+          if (manifest.widthFraction) {
+            dw = cw * manifest.widthFraction;
+            dh = dw * (h / w);
+          } else {
+            const fit = manifest.fit ?? "cover";
+            const factor = manifest.scale ?? 1;
+            const base =
+              fit === "contain"
+                ? Math.min(cw / w, chh / h)
+                : Math.max(cw / w, chh / h);
+            const scale = base * factor;
+            dw = w * scale;
+            dh = h * scale;
+          }
+          const anchor = manifest.anchor ?? "center";
+          let dx = (cw - dw) / 2;
+          let dy = (chh - dh) / 2;
+          if (anchor.includes("left")) dx = 0;
+          else if (anchor.includes("right")) dx = cw - dw;
+          if (anchor.includes("top")) dy = 0;
+          else if (anchor.includes("bottom")) dy = chh - dh;
           g.drawImage(asset, dx, dy, dw, dh);
+          if (manifest.feather) {
+            featherEdges(g, dx, dy, dw, dh, cw, chh, manifest.feather, frameBg());
+          }
         }
       } else {
         drawProcedural(g, cw, chh, chapter, reducedRef.current ? 0.5 : chapterT, gripper, time, isMobile);
@@ -317,6 +348,10 @@ export function RobotBackdrop() {
 
       manifest = loaded;
       total = loaded.count;
+      if (loaded.background) {
+        document.documentElement.style.setProperty("--bg", loaded.background);
+        bgColor = loaded.background;
+      }
       chapters = activeChapters();
       const set: FrameSet = isMobile ? "mobile" : "desktop";
       const seq = new FrameSequence(loaded, { step: isMobile ? 2 : 1 });
@@ -390,6 +425,7 @@ export function RobotBackdrop() {
     return () => {
       disposed = true;
       cancelAnimationFrame(frameId);
+      unregisterWake();
       ro.disconnect();
       themeObserver.disconnect();
       window.removeEventListener("scroll", onScroll);
@@ -415,7 +451,7 @@ export function RobotBackdrop() {
       <div className="absolute inset-0 bg-gradient-to-b from-bg/55 via-bg/70 to-bg/85 md:hidden" />
       {mode === "procedural" ? (
         <div className="absolute right-2 top-1/2 -translate-y-1/2 [writing-mode:vertical-rl]">
-          <span className="label-mono-sm border border-dashed border-line bg-bg-panel/80 px-1.5 py-2 text-accent">
+          <span className="label-mono-sm border border-dashed border-line bg-bg-panel/80 px-1.5 py-2 text-accent-text">
             PLACEHOLDER ROBOT — REPLACE WITH /public/frames
           </span>
         </div>
@@ -567,4 +603,56 @@ function roundRect(
   ctx.arcTo(x, y + h, x, y, radius);
   ctx.arcTo(x, y, x + w, y, radius);
   ctx.closePath();
+}
+
+function hexToRgb(hex: string): [number, number, number] {
+  const raw = hex.replace("#", "").trim();
+  const full = raw.length === 3 ? raw.split("").map((c) => c + c).join("") : raw;
+  const n = parseInt(full.length === 6 ? full : "e4e3df", 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+}
+
+/**
+ * Dissolves the frame's edges into the flat background with a smooth
+ * (gaussian-like) falloff, so the video rectangle blends into the page color
+ * instead of showing a hard seam. Only edges that are not flush with the canvas
+ * are feathered.
+ */
+function featherEdges(
+  g: CanvasRenderingContext2D,
+  dx: number,
+  dy: number,
+  dw: number,
+  dh: number,
+  cw: number,
+  ch: number,
+  feather: number,
+  bg: string,
+) {
+  const [r, gr, b] = hexToRgb(bg);
+  const rgba = (a: number) => `rgba(${r}, ${gr}, ${b}, ${a})`;
+  const stops: [number, number][] = [
+    [0, 1],
+    [0.4, 0.5],
+    [0.75, 0.12],
+    [1, 0],
+  ];
+
+  const band = (
+    x0: number, y0: number, x1: number, y1: number,
+    rx: number, ry: number, rw: number, rh: number,
+  ) => {
+    const grad = g.createLinearGradient(x0, y0, x1, y1);
+    for (const [t, a] of stops) grad.addColorStop(t, rgba(a));
+    g.fillStyle = grad;
+    g.fillRect(rx, ry, rw, rh);
+  };
+
+  const fx = dw * feather; // horizontal band width
+  const fy = dh * feather; // vertical band height
+
+  if (dy > 0) band(dx, dy, dx, dy + fy, dx, dy, dw, fy); // top
+  if (dy + dh < ch) band(dx, dy + dh, dx, dy + dh - fy, dx, dy + dh - fy, dw, fy); // bottom
+  if (dx > 0) band(dx, dy, dx + fx, dy, dx, dy, fx, dh); // left
+  if (dx + dw < cw) band(dx + dw, dy, dx + dw - fx, dy, dx + dw - fx, dy, fx, dh); // right
 }

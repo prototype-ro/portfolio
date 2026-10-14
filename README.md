@@ -1,6 +1,7 @@
-# Portfólio — Rodrigo [[sobrenome]]
+# Portfólio — Rodrigo Lage da Costa
 
-Portfólio profissional de um estudante de **Engenharia de Software (PUC Minas)**,
+Portfólio profissional de **Rodrigo Lage da Costa**, engenheiro civil e estudante de
+**Engenharia de Software (PUC Minas)**,
 com estética de **hardware Teenage Engineering** e um **robô de fundo animado
 pelo scroll**.
 
@@ -27,7 +28,7 @@ Vercel (ver [Deploy](#deploy)).
 - [Demonstração](#demonstração)
 - [Planejamento das sprints](#planejamento-das-sprints)
 - [O robô de fundo](#o-robô-de-fundo)
-- [O que ainda é placeholder](#o-que-ainda-é-placeholder)
+- [Conteúdo do site](#conteúdo-do-site)
 - [Documentação usada](#documentação-usada)
 - [Autores](#autores)
 - [Agradecimentos](#agradecimentos)
@@ -69,7 +70,7 @@ Wireframes de **média fidelidade** das quatro seções (desktop 1440 px e mobil
 [`docs/wireframes/`](docs/wireframes/) — passo a passo de importação em
 [`docs/wireframes/LEIA-ME.md`](docs/wireframes/LEIA-ME.md).
 
-🔗 **Link do Figma:** `[[LINK FIGMA]]`
+🔗 **Link do Figma:** [Wireframe — Portfólio](https://www.figma.com/design/Ic38NiEweeeICNk6XubR0a/Wireframe-Portfolio?node-id=0-1)
 
 | Desktop | Mobile |
 | --- | --- |
@@ -234,15 +235,21 @@ Interações: parallax do mouse (desktop), hover nos cartões (empurrão),
 foco no formulário e envio com sucesso. `prefers-reduced-motion` desativa o
 movimento. Detalhes em [`docs/render-guide.md`](docs/render-guide.md).
 
-## O que ainda é placeholder
+## Conteúdo do site
 
-Ver [`CONTEUDO-PENDENTE.md`](CONTEUDO-PENDENTE.md). Em resumo: nome/e-mail/
-telefone/links e textos marcados `[[...]]` em `src/data/`, imagens dos projetos
-(caixas 16:10 com `SCREEN 0N`) e link do Figma.
+Os dados exibidos ficam em [`src/data/`](src/data/) e podem ser editados sem
+mexer nos componentes:
+
+| Arquivo | Conteúdo |
+| --- | --- |
+| `projects.ts` | Timeline de projetos (Quicknote, Eregion, The Simple Trip), do mais antigo ao mais recente, com descrição PT/EN, tecnologias, repositório e imagem em `public/projects/` |
+| `experiences.ts` | Experiências profissionais (Worley e AtkinsRéalis) |
+| `contact.ts` | Canais de contato (e-mail, WhatsApp, LinkedIn, GitHub) |
+| `i18n.ts` | Textos da interface em português e inglês |
 
 ## Autores
 
-**Rodrigo [[sobrenome]]** — Engenharia de Software, PUC Minas.
+**Rodrigo Lage da Costa** — Engenharia de Software, PUC Minas.
 Orientação: Prof. João Paulo Aramuni (DIAW).
 
 ## Documentação usada

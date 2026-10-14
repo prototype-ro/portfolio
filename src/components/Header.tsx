@@ -51,7 +51,7 @@ export function Header() {
           </span>
           <span className="flex flex-col leading-none">
             <span className="text-sm font-semibold tracking-[-0.02em]">
-              Rodrigo <span className="text-ink-dim">[[sobrenome]]</span>
+              Rodrigo <span className="text-ink-dim">Lage da Costa</span>
             </span>
             <span className="label-mono-sm mt-0.5">{t("header.model")}</span>
           </span>
@@ -75,7 +75,7 @@ export function Header() {
                 <span
                   className={cn(
                     "label-mono-sm",
-                    isActive && "text-accent",
+                    isActive && "text-accent-text",
                   )}
                 >
                   {item.index}
@@ -136,7 +136,7 @@ export function Header() {
                     <span
                       className={cn(
                         "label-mono",
-                        active === item.anchor && "text-accent",
+                        active === item.anchor && "text-accent-text",
                       )}
                     >
                       {item.index}

@@ -89,22 +89,44 @@ export const control: RobotControl = {
 const now = () =>
   typeof performance !== "undefined" ? performance.now() : Date.now();
 
+// ---------------------------------------------------------------------------
+// Wake channel — the animation loop may be idle (nothing to animate), but a
+// command (hover, focus, submit, wave) still needs it to restart. The backdrop
+// registers its `wake` here; commands call `requestWake()`.
+// ---------------------------------------------------------------------------
+let wakeHandler: (() => void) | null = null;
+
+export function registerWake(fn: () => void): () => void {
+  wakeHandler = fn;
+  return () => {
+    if (wakeHandler === fn) wakeHandler = null;
+  };
+}
+
+export function requestWake(): void {
+  wakeHandler?.();
+}
+
 /** Temporarily push the target frame ("the robot reacts"). */
 export function impulse(delta = 3, duration = 520): void {
   control.impulse = delta;
   control.impulseUntil = now() + duration;
+  requestWake();
 }
 
 export function holdChapter(id: ChapterId | null): void {
   control.hold = id;
+  requestWake();
 }
 
 export function triggerOkGesture(duration = 900): void {
   control.okUntil = now() + duration;
+  requestWake();
 }
 
 export function triggerWave(duration = 1600): void {
   control.waveUntil = now() + duration;
+  requestWake();
 }
 
 export function isOkActive(): boolean {

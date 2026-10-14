@@ -1,13 +1,22 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { MotionConfig } from "framer-motion";
 import { I18nProvider } from "@/lib/i18n-context";
 import { Toaster } from "@/components/ui/sonner";
+import type { Lang } from "@/data/i18n";
 
-export function Providers({ children }: { children: ReactNode }) {
+export function Providers({
+  children,
+  initialLang = "pt",
+}: {
+  children: ReactNode;
+  initialLang?: Lang;
+}) {
   return (
-    <I18nProvider>
-      {children}
+    <I18nProvider initialLang={initialLang}>
+      {/* Respect the OS "reduce motion" setting for every Framer animation. */}
+      <MotionConfig reducedMotion="user">{children}</MotionConfig>
       <Toaster
         position="bottom-right"
         theme="light"

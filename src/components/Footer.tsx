@@ -15,7 +15,7 @@ export function Footer() {
       <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col gap-1">
           <span className="text-sm font-semibold tracking-tight">
-            © {new Date().getFullYear()} Rodrigo [[sobrenome]]
+            © {new Date().getFullYear()} Rodrigo Lage da Costa
           </span>
           <span className="label-mono-sm">{t("footer.rights")}</span>
         </div>
@@ -27,7 +27,7 @@ export function Footer() {
               href={channel.href}
               target={channel.id === "email" ? undefined : "_blank"}
               rel={channel.id === "email" ? undefined : "noreferrer"}
-              className="label-mono transition-colors hover:text-accent"
+              className="label-mono transition-colors hover:text-accent-text"
             >
               {t(channel.labelKey)} ↗
             </a>
@@ -40,7 +40,7 @@ export function Footer() {
           <span className="label-mono-sm text-led-off">
             {t("hud.scroll")}
           </span>
-          <span className="display-scroll text-2xl leading-none text-accent tabular-nums">
+          <span className="display-scroll text-2xl leading-none text-accent-text tabular-nums">
             {pct}%
           </span>
           <span className="h-6 w-px bg-white/10" />

@@ -54,6 +54,9 @@ export default function Page() {
             <p className="mt-1 max-w-xl text-sm leading-snug text-ink-dim">
               {t("hero.tagline.en")}
             </p>
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-ink-dim">
+              {t("about.p2")}
+            </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
               <a
@@ -139,6 +142,15 @@ export default function Page() {
             <SpecRow label="STATUS" value={t("hero.status")} />
           </div>
         </div>
+
+        <figure className="mt-10 border-l-2 border-accent pl-5 md:pl-6">
+          <blockquote className="max-w-3xl text-xl leading-snug text-ink md:text-2xl">
+            “{t("about.quote")}”
+          </blockquote>
+          <figcaption className="label-mono mt-3">
+            {t("about.quote.source")}
+          </figcaption>
+        </figure>
       </SectionShell>
 
       <SectionShell

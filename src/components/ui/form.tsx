@@ -108,7 +108,7 @@ function FormLabel({
     <Label
       data-slot="form-label"
       data-error={!!error}
-      className={cn("data-[error=true]:text-accent", className)}
+      className={cn("data-[error=true]:text-accent-text", className)}
       htmlFor={formItemId}
       {...props}
     />
@@ -157,7 +157,7 @@ function FormMessage({
     <p
       data-slot="form-message"
       id={formMessageId}
-      className={cn("text-accent text-[11px] font-mono uppercase tracking-wide", className)}
+      className={cn("text-accent-text text-[11px] font-mono uppercase tracking-wide", className)}
       {...props}
     >
       {body}

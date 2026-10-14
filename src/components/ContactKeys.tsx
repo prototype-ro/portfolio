@@ -35,7 +35,7 @@ export function ContactKeys() {
           >
             <div className="flex items-center justify-between">
               <Icon className="size-6 text-ink" />
-              <ArrowUpRight className="size-4 text-ink-dim transition-colors group-hover:text-accent" />
+              <ArrowUpRight className="size-4 text-ink-dim transition-colors group-hover:text-accent-text" />
             </div>
             <div className="mt-6">
               <span className="label-mono block">{t(channel.labelKey)}</span>

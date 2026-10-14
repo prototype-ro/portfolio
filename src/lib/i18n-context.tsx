@@ -26,35 +26,61 @@ type I18nContextValue = {
 };
 
 const STORAGE_KEY = "portfolio.lang";
+const COOKIE_KEY = "lang";
+const COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 
 const I18nContext = createContext<I18nContextValue | null>(null);
 
-function readStoredLang(): Lang {
+function readStoredLang(): Lang | null {
   try {
     const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored && (LANGUAGES as string[]).includes(stored)) {
-      return stored as Lang;
-    }
+    if (stored && (LANGUAGES as string[]).includes(stored)) return stored as Lang;
   } catch {
-    // localStorage can throw in private mode — ignore and use default.
+    // localStorage can throw in private mode — ignore.
   }
-  return "pt";
+  return null;
 }
 
-export function I18nProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("pt");
+function hasLangCookie(): boolean {
+  return document.cookie.split("; ").some((c) => c.startsWith(`${COOKIE_KEY}=`));
+}
 
+function persistLang(lang: Lang): void {
+  document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+  try {
+    window.localStorage.setItem(STORAGE_KEY, lang);
+  } catch {
+    // ignore persistence failures
+  }
+  // Cookie lets the server render the right language on the next request,
+  // so returning visitors never see the PT→EN flash.
+  try {
+    document.cookie = `${COOKIE_KEY}=${lang}; path=/; max-age=${COOKIE_MAX_AGE}; samesite=lax`;
+  } catch {
+    // ignore
+  }
+}
+
+export function I18nProvider({
+  children,
+  initialLang = "pt",
+}: {
+  children: ReactNode;
+  initialLang?: Lang;
+}) {
+  const [lang, setLangState] = useState<Lang>(initialLang);
+
+  // One-time migration for visitors who picked a language before the cookie
+  // existed (their choice lived only in localStorage).
   useEffect(() => {
-    setLangState(readStoredLang());
+    if (hasLangCookie()) return;
+    const stored = readStoredLang();
+    if (stored && stored !== initialLang) setLangState(stored);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
-    try {
-      window.localStorage.setItem(STORAGE_KEY, lang);
-    } catch {
-      // ignore persistence failures
-    }
+    persistLang(lang);
   }, [lang]);
 
   const setLang = useCallback((next: Lang) => setLangState(next), []);

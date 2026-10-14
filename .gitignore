@@ -44,6 +44,3 @@ next-env.d.ts
 # capture scratch
 /.capture-frames
 
-# rendered robot frames (large binaries) — see docs/render-guide.md
-/public/frames/robot/desktop/*.webp
-/public/frames/robot/mobile/*.webp

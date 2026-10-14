@@ -37,7 +37,7 @@ const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 const EMAILJS_READY = Boolean(SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY);
 
 const fieldClass =
-  "chamfer-sm h-auto rounded-none border-line bg-bg px-3 py-3 font-mono text-sm text-ink placeholder:text-ink-dim/60 focus-visible:border-accent focus-visible:ring-0 aria-invalid:border-accent";
+  "chamfer-sm h-auto rounded-none border-line bg-bg px-3 py-3 font-mono text-sm text-ink placeholder:text-ink-dim focus-visible:border-accent focus-visible:ring-0 aria-invalid:border-accent-text";
 
 export function ContactForm() {
   const { t } = useI18n();
@@ -71,6 +71,10 @@ export function ContactForm() {
           {
             from_name: values.name,
             from_email: values.email,
+            // Same values under the names EmailJS's default "Contact Us" template uses.
+            name: values.name,
+            email: values.email,
+            title: "Portfólio",
             message: values.message,
           },
           { publicKey: PUBLIC_KEY as string },
@@ -202,7 +206,7 @@ export function ContactForm() {
         </div>
 
         {!EMAILJS_READY && process.env.NODE_ENV !== "production" ? (
-          <p className="label-mono-sm text-accent">
+          <p className="label-mono-sm text-accent-text">
             {"// "}
             {t("contact.form.simulated")}
           </p>
