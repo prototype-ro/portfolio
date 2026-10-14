@@ -5,8 +5,8 @@ Portfólio profissional de **Rodrigo Lage da Costa**, engenheiro civil e estudan
 com estética de **hardware Teenage Engineering** e um **robô de fundo animado
 pelo scroll**.
 
-**Status:** 🟢 Sprints **S01–S03 concluídas localmente** — falta apenas publicar na
-Vercel (ver [Deploy](#deploy)).
+**Status:** 🟢 Sprints **S01–S03 concluídas** — site publicado em
+**<https://prototype-ro.vercel.app>**.
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-000?logo=nextdotjs)](https://nextjs.org)
 [![React](https://img.shields.io/badge/React-19-087ea4?logo=react)](https://react.dev)
@@ -149,7 +149,7 @@ NEXT_PUBLIC_SITE_URL=            # opcional: URL pública (metadataBase/OG)
 
 ## Deploy
 
-Publicado na **Vercel**. Acesso: **`[[URL DO SITE]]`**.
+Publicado na **Vercel**. Acesso: **<https://prototype-ro.vercel.app>**.
 
 Passo a passo:
 
@@ -219,7 +219,7 @@ Capturas do protótipo atual (Playwright, 1440×900 e 390×844) em
 | --- | --- | --- |
 | **Lab01S01** | Repositório, wireframes, protótipo navegável, layout e robô (fallback 2D) | ✅ |
 | **Lab01S02** | Sobre bilíngue, timeline de projetos, experiências, formulário validado, EmailJS | ✅ |
-| **Lab01S03** | Deploy na Vercel, acabamento visual, capturas, README final | ✅ (deploy pendente) |
+| **Lab01S03** | Deploy na Vercel, acabamento visual, capturas, README final | ✅ |
 
 ## O robô de fundo
 
