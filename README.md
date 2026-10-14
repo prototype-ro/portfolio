@@ -70,7 +70,7 @@ Wireframes de **média fidelidade** das quatro seções (desktop 1440 px e mobil
 [`docs/wireframes/`](docs/wireframes/) — passo a passo de importação em
 [`docs/wireframes/LEIA-ME.md`](docs/wireframes/LEIA-ME.md).
 
-🔗 **Link do Figma:** [Wireframe — Portfólio](https://www.figma.com/design/Ic38NiEweeeICNk6XubR0a/Wireframe-Portfolio?node-id=0-1)
+🔗 **Link do Figma:** [Wireframe — Portfólio](https://www.figma.com/community/file/1692018514319490793)
 
 | Desktop | Mobile |
 | --- | --- |

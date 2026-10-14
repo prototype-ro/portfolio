@@ -49,7 +49,7 @@ export const dict = {
     "about.spec.interesses": "Interesses",
     "about.spec.interesses.value": "Música, arte, games, tecnologia, cinema e viagens",
     "about.quote":
-      "Ver o mundo, coisas perigosas de se alcançar, ver atrás das paredes, aproximar-se, encontrar uns aos outros e sentir. Esse é o propósito da vida.",
+      "Ver o mundo, chegar a lugares perigosos, enxergar além dos muros, aproximar-se, encontrar uns aos outros e sentir. Esse é o propósito da vida.",
     "about.quote.source": "LEMA DA REVISTA LIFE · A VIDA SECRETA DE WALTER MITTY (2013)",
     "about.spec.objetivos": "Objetivos",
     "about.spec.objetivos.value": "Lançar produtos próprios e atuar como engenheiro full-stack",
