@@ -16,6 +16,7 @@ pelo scroll**.
 
 ## Índice
 
+- [Links úteis](#links-úteis)
 - [Sobre o projeto](#sobre-o-projeto)
 - [Funcionalidades](#funcionalidades)
 - [Wireframes (Figma)](#wireframes-figma)
@@ -31,8 +32,15 @@ pelo scroll**.
 - [Conteúdo do site](#conteúdo-do-site)
 - [Documentação usada](#documentação-usada)
 - [Autores](#autores)
+- [Contribuição](#contribuição)
 - [Agradecimentos](#agradecimentos)
 - [Licença](#licença)
+
+## Links úteis
+
+- 🌐 **Site publicado:** <https://prototype-ro.vercel.app>
+- 🎨 **Wireframes no Figma:** <https://www.figma.com/community/file/1692018514319490793>
+- 💻 **Repositório:** <https://github.com/prototype-ro/portfolio>
 
 ## Sobre o projeto
 
@@ -263,6 +271,13 @@ Orientação: Prof. João Paulo Aramuni (DIAW).
 - EmailJS (`@emailjs/browser`): <https://www.emailjs.com/docs>
 - Produção dos frames do robô: [`docs/render-guide.md`](docs/render-guide.md)
 - Roteiro da apresentação: [`docs/apresentacao.md`](docs/apresentacao.md)
+
+## Contribuição
+
+1. Faça um fork do repositório.
+2. Crie uma branch: `git checkout -b feat/minha-melhoria`.
+3. Commit e push: `git commit -m "feat: minha melhoria"` e `git push origin feat/minha-melhoria`.
+4. Abra um Pull Request descrevendo a mudança.
 
 ## Agradecimentos
 
